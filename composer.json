@@ -1,6 +1,12 @@
 {
     "name": "mkoveni/simina",
     "description": "Simple php MVC framework made with love",
+    "keywords": [
+        "PHP",
+        "MVC",
+        "Framework",
+        "Simina"
+    ],
     "type": "library",
     "require": {
         "vlucas/valitron": "^1.4",
@@ -19,8 +25,7 @@
             "email": "simon@iamrivalani.co.za"
         }
     ],
-    "minimum-stability": "alpha",
-    "version": "1.0",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Simina\\": "src"
