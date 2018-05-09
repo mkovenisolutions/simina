@@ -1,5 +1,5 @@
 {
-    "name": "simina",
+    "name": "mkoveni/simina",
     "description": "Simple php MVC framework made with love",
     "type": "library",
     "require": {
