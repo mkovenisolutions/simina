@@ -67,7 +67,7 @@ trait CookieAuthentication
 
     protected function getUserByIdentifier($identifier) {
 
-        return $this->entityManager->getRepository(User::Class)->findOneBy([
+        return $this->entityManager->getRepository($this->entity)->findOneBy([
             'token_identifier' => $identifier
         ]);
     }

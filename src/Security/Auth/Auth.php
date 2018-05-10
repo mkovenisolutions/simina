@@ -3,7 +3,6 @@
 namespace Simina\Security\Auth;
 
 use Doctrine\ORM\EntityManager;
-use Simina\Models\User;
 use Simina\Storage\Contracts\StorageInterface;
 use Simina\Security\Hashing\Hasher;
 use Simina\Security\Auth\Traits\CookieAuthentication;
@@ -47,11 +46,14 @@ class Auth
 
      protected $user;
 
+     protected $entity;
+
     public function __construct(EntityManager $entityManager, Hasher $hasher, CookieRecaller $recaller)
     {
         $this->entityManager = $entityManager;
         $this->hasher = $hasher;
         $this->recaller = $recaller;
+        $this->entity = config('auth.entity');
 
     }
 
@@ -136,12 +138,12 @@ class Auth
 
     protected function findUserById($id)
     {
-        return $this->entityManager->getRepository(User::class)->find($id);
+        return $this->entityManager->getRepository($this->entity)->find($id);
     }
 
     protected function findUserByEmail($email) {
 
-        return $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
+        return $this->entityManager->getRepository($this->entity)->findOneBy(['email' => $email]);
     }
 
 
