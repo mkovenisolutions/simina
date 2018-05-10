@@ -28,7 +28,8 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Simina\\": "src"
+            "Simina\\": "src",
+            "App\\": "app"
         },
         "files": [
             "src/helpers.php"

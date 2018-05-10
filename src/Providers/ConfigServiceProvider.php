@@ -22,7 +22,7 @@ class ConfigServiceProvider extends AbstractServiceProvider
 
             $arrayParser = new ArrayParser([
                 'app' => config_path('app.php'),
-                'auth' => config('auth.php'),
+                'auth' => config_path('auth.php'),
                 'db' => config_path('database.php'),
                 'security' => config_path('security.php'),
                 'path' => config_path('path.php')

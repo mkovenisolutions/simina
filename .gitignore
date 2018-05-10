@@ -4,3 +4,6 @@
 /templates
 /bootstrap
 /routes
+/app
+index.php
+.env
