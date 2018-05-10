@@ -1,12 +1,12 @@
 <?php
 
-use Zend\Diactoros\Response\RedirectResponse;
 use Simina\Security\Auth\Auth;
 use Simina\Storage\Contracts\StorageInterface;
-use Simina\Storage\Flash;
 use Simina\Storage\Cookie;
+use Simina\Storage\Flash;
+use Zend\Diactoros\Response\RedirectResponse;
 
-if(!function_exists('auth')) {
+if (!function_exists('auth')) {
 
     /**
      * Authentication class instanace
@@ -27,50 +27,49 @@ if (!function_exists('base_path')) {
     function base_path($path = '')
     {
 
-        return __DIR__ . '/..//' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+        return container()->get('basePath') . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
 }
 
+if (!function_exists('config_path')) {
 
-if(!function_exists('config_path')) {
-
-   function config_path($path = '')
-   {
-    return base_path('config/' . $path);
-   }
+    function config_path($path = '')
+    {
+        return container()->get('configPath') . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    }
 }
 
-if(!function_exists('templates_path')) {
+if (!function_exists('templates_path')) {
 
     function templates_path($path = '')
     {
-     return base_path('templates/' . $path);
+        return container()->get('templatesPath') . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
- }
+}
 
- if(!function_exists('public_path')) {
+if (!function_exists('public_path')) {
 
     function public_path($path = '')
     {
-     return base_path('public/' . $path);
+        return container()->get('publicPath') . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
- }
+}
 
- if(!function_exists('routes_path')) {
+if (!function_exists('routes_path')) {
 
     function routes_path($path = '')
     {
-     return base_path('routes/' . $path);
+        return container()->get('routesPath') . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
- }
+}
 
- if(!function_exists('assets_path')) {
+if (!function_exists('assets_path')) {
 
     function assets_path($path = '')
     {
-     return base_path('assets/' . $path);
+        return base_path('assets' . $path);
     }
- }
+}
 
 //End of path helpers
 if (!function_exists('config')) {
@@ -94,7 +93,7 @@ if (!function_exists('container')) {
     function container()
     {
 
-        return \Simina\App::getContainerInstance();
+        return \Simina\Singletons::getContainerInstance();
     }
 }
 
@@ -136,18 +135,20 @@ if (!function_exists('env')) {
     }
 }
 
-if(!function_exists('flash')) {
+if (!function_exists('flash')) {
 
     /**
      * Undocumented function
      *
      * @return \Simina\Storage\Flash
      */
-    function flash() {
+    function flash()
+    {
 
         return container()->get(Flash::class);
     }
-};
+}
+;
 
 if (!function_exists('pathForRoute')) {
 
@@ -169,13 +170,14 @@ if (!function_exists('redirect')) {
     }
 }
 
-if(!function_exists('session')) {
+if (!function_exists('session')) {
     /**
-     * storage interface 
+     * storage interface
      *
      * @return \Simina\Storage\Contracts\StorageInterface
      */
-    function session() {
+    function session()
+    {
 
         return container()->get(StorageInterface::class);
     }

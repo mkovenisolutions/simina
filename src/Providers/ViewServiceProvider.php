@@ -15,7 +15,7 @@ class ViewServiceProvider extends AbstractServiceProvider
 
         $c->share(ViewResolver::class, function(){
 
-            $loader = new \Twig_Loader_Filesystem(templates_path('templates'));
+            $loader = new \Twig_Loader_Filesystem(templates_path());
 
             $twigEnv = new \Twig_Environment($loader, [
                 'cache' => false
